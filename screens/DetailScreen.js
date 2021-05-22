@@ -3,7 +3,7 @@ import {View,Text,StyleSheet} from 'react-native'
 const DetailScreen = () => {
     return (
         <View style={styles.screen}>
-            <Text>The Favourite Screen!</Text>
+            <Text>The Detail Screen!</Text>
         </View>
     )
 }
