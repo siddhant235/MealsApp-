@@ -1,23 +1,26 @@
 import React from 'react'
-import {View,Text,StyleSheet,Button} from 'react-native'
-import {Categories} from '../data/dummy-data'
+import {View,Text,StyleSheet,FlatList} from 'react-native'
+import {Categories,MEALS} from '../data/dummy-data'
 const CategoryMealScreen = (props) => {
    const catId= props.navigation.getParam('categoryId')
-   const selectedCat=Categories.find(cat=>cat.id===catId)
+   const renderMealItem=itemData=>{
+       return(<View><Text>{itemData.item.title}</Text></View>)
+   }
+  const displayMeals=MEALS.filter(meal=>meal.categoryIds.indexOf(catId)>=0)
     return (
         <View style={styles.screen}>
-            <Text>The category Meal Screen!</Text>
-            <Text>{selectedCat.title}</Text>
-            <Button title="Go to details" onPress={()=>{
-                props.navigation.navigate('MealDetails')
-            }}/>
-             <Button title="Go Back" onPress={()=>{
-                props.navigation.goBack();
-                //props.navigaton.pop() can also be used in Stacknavigator
-                
-            }}/>
+           <FlatList data={displayMeals} keyextractor={(item,index)=>item.id} renderItem={renderMealItem}/>
         </View>
     )
+}
+CategoryMealScreen.navigationOptions=navigationData=>{
+    const catId=navigationData.navigation.getParam('categoryId');
+    const selectedCategory=Categories.find(cat=>cat.id===catId)
+
+    return {
+      headerTitle:selectedCategory.title  ,
+
+    }
 }
 const styles=StyleSheet.create({
     screen:{
