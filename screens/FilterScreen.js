@@ -7,6 +7,10 @@ const FilterScreen = () => {
         </View>
     )
 }
+
+FilterScreen.navigationOptions={
+    headerTitle:'Filter Meals'
+}
 const styles=StyleSheet.create({
     screen:{
         flex:1,
