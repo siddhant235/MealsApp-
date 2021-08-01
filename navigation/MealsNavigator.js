@@ -1,6 +1,6 @@
 import React from 'react'
 import { Platform,Text } from 'react-native';
-import Colors  from '../contants/Colors';
+import Colors from '../constants/Colors';
 import {createAppContainer} from 'react-navigation'
 import {createStackNavigator} from 'react-navigation-stack';
 import {createDrawerNavigator} from 'react-navigation-drawer'
@@ -82,7 +82,12 @@ const MealsFavTabNavigator=Platform.OS==='android'?createMaterialBottomTabNaviga
 })
 
 const FilterStackNavigator= createStackNavigator({
-    Filters:FiltersScreen
+    Filters:{screen:FiltersScreen ,navigationOptions:{
+        headerStyle:{
+            backgroundColor:Colors.primaryColor
+        },
+        headerTintColor:Platform.OS==='android'?'white':Colors.primaryColor,
+    }}
 })
 
 const MainNavigator=createDrawerNavigator({
