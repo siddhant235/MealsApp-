@@ -1,5 +1,5 @@
 import React from 'react'
-import {FlatList,StyleSheet} from 'react-native'
+import {FlatList} from 'react-native'
 import {Categories} from '../data/dummy-data'
 import CategoryGridTile from '../components/CategoryGridTitle'
 import {HeaderButtons,Item} from 'react-navigation-header-buttons'
